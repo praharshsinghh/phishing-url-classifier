@@ -322,3 +322,6 @@ Built as a beginner-friendly ML project for learning and hackathons.
 **Happy Phishing Detection! 🔒**
 
 Remember: Stay safe online and always verify suspicious URLs!
+
+# phishing-url-classifier
+This project uses machine learning to identify phishing URLs by analyzing URL patterns and security indicators, and provides an easy-to-use web and CLI interface.
