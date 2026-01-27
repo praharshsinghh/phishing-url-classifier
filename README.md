@@ -269,7 +269,7 @@ This project demonstrates:
 ## ⚠️ Limitations & Disclaimer
 
 - This is an educational project for learning ML concepts
-- Real phishing detection requires more sophisticated features and larger datasets
+- Real phishing detection requires more sophisticated features and larger datasets (tho ill add )
 - Always verify URLs through multiple sources
 - Not intended for production security systems
 
@@ -293,6 +293,13 @@ Solution: Check if port 8501 is available, or specify a different port:
 ```bash
 streamlit run app.py --server.port 8502
 ```
+## 🔮 Future Work
+
+- Expand the dataset using real-world phishing URL sources  
+- Add advanced security features such as domain age, URL entropy, and homograph attack detection  
+- Improve model performance through tuning and ensemble techniques  
+- Enhance explainability with feature importance and decision insights  
+- Provide additional deployment options such as REST APIs or browser extensions
 
 ## 📚 Learning Resources
 
@@ -313,15 +320,15 @@ Feel free to:
 
 This project is open source and available for educational purposes.
 
-## 👨‍💻 Author
+## 👨‍💻 Author - me :) 
 
-Built as a beginner-friendly ML project for learning and hackathons.
+Built as a beginner-friendly ML project for learning. 
 
 ---
 
 **Happy Phishing Detection! 🔒**
 
-Remember: Stay safe online and always verify suspicious URLs!
+Remember: Stay safe online and always verify suspicious URLs.
 
 # phishing-url-classifier
-This project uses machine learning to identify phishing URLs by analyzing URL patterns and security indicators, and provides an easy-to-use web and CLI interface.
+This project uses machine learning to identify phishing URLs by analyzing URL patterns and security indicators, and provides an easy-to-use web and CLI interface. blah blah blah 
