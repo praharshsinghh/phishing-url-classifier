@@ -1,59 +1,62 @@
 # 🚀 Quick Start Guide
 
-Get up and running in 3 minutes!
+Get your phishing URL classifier running in 3 simple steps!
 
-## Step 1: Install Dependencies (30 seconds)
+## Step 1: Install Dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
 
-## Step 2: Train the Model (1 minute)
+## Step 2: Generate Dataset & Train
 
 ```bash
+# Generate 20,000 URL dataset
+python generate_dataset.py
+# Choose option 1 (synthetic) or option 2 (Kaggle real-world data)
+
+# Train the model
 python src/train_model.py
 ```
 
-You should see output showing model training and evaluation.
+## Step 3: Test It Out!
 
-## Step 3: Try It Out!
-
-### Option A: Web Interface (Recommended)
+### Web Interface (Recommended)
 
 ```bash
 streamlit run app.py
 ```
 
-Then open your browser to `http://localhost:8501` and test these URLs:
+Open your browser to `http://localhost:8501` and test these URLs:
 
-**Legitimate URLs:**
+**Try these legitimate URLs:**
 - `https://www.google.com`
 - `https://www.github.com`
 - `https://www.amazon.com`
 
-**Phishing URLs:**
+**Try these suspicious URLs:**
 - `http://192.168.1.1/login.php`
 - `http://secure-paypal-verify.tk/account`
-- `http://bit.ly/free-iphone-win`
+- `http://g00gle.com/signin`
 
-### Option B: Command Line
+### Command Line Interface
 
 ```bash
 python src/predict.py https://www.google.com
-python src/predict.py http://phishing-site.tk/login
+python src/predict.py http://suspicious-site.tk/login
 ```
 
-## 🎉 That's It!
+## 🎉 You're Done!
 
-You now have a working phishing URL classifier!
+Your phishing URL classifier is now working with 20,000 URLs!
 
-## Next Steps
+## Two Dataset Options:
 
-1. **Add more data**: Edit `data/urls.csv` to add more training examples
-2. **Retrain**: Run `python src/train_model.py` again
-3. **Customize**: Modify features in `src/features.py`
-4. **Share**: Show off your project!
+1. **Synthetic Data (Option 1)**: Fast, works offline, good for learning
+2. **Kaggle Real-world Data (Option 2)**: Better performance, requires Kaggle API setup
 
 ## Need Help?
 
-Check the main [README.md](README.md) for detailed documentation.
+- **Detailed guide**: See [HOW_TO_RUN.md](HOW_TO_RUN.md)
+- **Kaggle setup**: See [KAGGLE_INTEGRATION.md](KAGGLE_INTEGRATION.md)
+- **Full documentation**: Check [README.md](README.md)

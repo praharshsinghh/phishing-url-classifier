@@ -138,8 +138,26 @@ def train_and_evaluate_models(X_train, X_test, y_train, y_test):
 
 def main():
     """Main training pipeline."""
-    # Paths
-    data_path = os.path.join('data', 'urls.csv')
+    # Paths - check for datasets in order of preference
+    possible_datasets = [
+        os.path.join('data', 'urls_kaggle_20k.csv'),      # Kaggle 20k dataset
+        os.path.join('data', 'urls_synthetic_20k.csv'),   # Synthetic 20k dataset
+        os.path.join('data', 'urls.csv')                  # Original small dataset
+    ]
+    
+    data_path = None
+    for path in possible_datasets:
+        if os.path.exists(path):
+            data_path = path
+            break
+    
+    if data_path is None:
+        print("No dataset found! Please run: python generate_dataset.py")
+        print("Choose option 1 for synthetic data or option 2 for Kaggle data.")
+        return
+    
+    print(f"Using dataset: {data_path}")
+    
     model_dir = 'models'
     model_path = os.path.join(model_dir, 'phishing_model.joblib')
     

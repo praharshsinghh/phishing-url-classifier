@@ -1,15 +1,15 @@
 # 🔒 Phishing URL Classifier
 
-An end-to-end machine learning project that detects phishing URLs using interpretable features and classical ML algorithms. Built with Python, scikit-learn, and Streamlit.
+A machine learning project that detects phishing URLs using interpretable features and classical ML algorithms. Built with Python, scikit-learn, and Streamlit.
 
 ## 📋 What This Project Does
 
-This project provides a complete phishing detection system that:
+This project provides a phishing detection system that:
 - Analyzes URLs to identify potential phishing attempts
 - Uses interpretable features (URL length, special characters, domain patterns, etc.)
 - Trains and compares multiple ML models (Logistic Regression, Decision Tree, Random Forest)
 - Provides both a web interface (Streamlit) and command-line interface for predictions
-- Achieves high accuracy with simple, explainable features
+- Works reasonably well on common phishing patterns
 
 ## 🎯 Features
 
@@ -62,11 +62,33 @@ python src/train_model.py
 ```
 
 This will:
-- Load the dataset from `data/urls.csv`
+- Load the dataset (automatically detects the largest available dataset)
 - Extract features from each URL
 - Train three different ML models
 - Evaluate and compare their performance
 - Save the best model to `models/phishing_model.joblib`
+
+### Available Datasets
+
+The system will automatically use the largest dataset available:
+
+1. **`urls_mega_kaggle.csv`** - Large dataset from Kaggle (if generated)
+2. **`urls_comprehensive.csv`** - Real + synthetic data (if generated)  
+3. **`urls_expanded.csv`** - Synthetic expanded data (if generated)
+4. **`urls.csv`** - Original small dataset (30 URLs)
+
+### Expanding Your Dataset
+
+To improve model performance, you can generate larger datasets:
+
+```bash
+python generate_dataset.py
+```
+
+Choose from:
+- **Synthetic data**: Generated phishing patterns (works offline)
+- **Real + synthetic**: Downloads real phishing URLs from public sources
+- **Kaggle datasets**: Large-scale real-world datasets (requires Kaggle API setup)
 
 **Expected Output:**
 ```
@@ -144,20 +166,28 @@ Probabilities:
 phishing-url-classifier/
 │
 ├─ data/
-│   └─ urls.csv              # Training dataset
+│   ├─ urls.csv                    # Original small dataset (30 URLs)
+│   ├─ urls_expanded.csv           # Synthetic expanded dataset (optional)
+│   ├─ urls_comprehensive.csv      # Real + synthetic dataset (optional)
+│   └─ urls_mega_kaggle.csv        # Large Kaggle dataset (optional)
 │
 ├─ models/
-│   └─ phishing_model.joblib # Trained model (created after training)
+│   └─ phishing_model.joblib       # Trained model (created after training)
 │
 ├─ src/
-│   ├─ features.py           # Feature extraction utilities
-│   ├─ train_model.py        # Model training script
-│   ├─ predict.py            # Prediction functions + CLI
+│   ├─ features.py                 # Feature extraction utilities
+│   ├─ train_model.py              # Model training script
+│   ├─ predict.py                  # Prediction functions + CLI
+│   ├─ data_generator.py           # Synthetic data generation
+│   ├─ real_data_integrator.py     # Real phishing data integration
+│   ├─ kaggle_data_integrator.py   # Kaggle dataset integration
 │   └─ __init__.py
 │
-├─ app.py                    # Streamlit web application
-├─ requirements.txt          # Python dependencies
-└─ README.md                 # This file
+├─ app.py                          # Streamlit web application
+├─ generate_dataset.py             # Dataset generation interface
+├─ compare_datasets.py             # Performance comparison tool
+├─ requirements.txt                # Python dependencies
+└─ README.md                       # This file
 ```
 
 ## 🧠 How It Works (ML Approach)
@@ -223,7 +253,16 @@ http://phishing-site.tk/login,phishing
 
 ### Adding More Training Data
 
-1. Add URLs and labels to `data/urls.csv`
+The easiest way to improve your model is to use larger datasets:
+
+```bash
+python generate_dataset.py
+```
+
+This will help you create datasets with thousands of URLs instead of just 30.
+
+You can also manually add URLs to `data/urls.csv`:
+1. Add URLs and labels to the CSV file
 2. Re-run the training script:
 ```bash
 python src/train_model.py
@@ -269,9 +308,10 @@ This project demonstrates:
 ## ⚠️ Limitations & Disclaimer
 
 - This is an educational project for learning ML concepts
-- Real phishing detection requires more sophisticated features and larger datasets (tho ill add )
-- Always verify URLs through multiple sources
-- Not intended for production security systems
+- The model works on common phishing patterns but won't catch all sophisticated attacks
+- Larger datasets improve performance, but no model is 100% accurate
+- Always verify suspicious URLs through multiple sources
+- Not intended for production security systems without additional validation
 
 
 ## 🐛 Troubleshooting
@@ -295,11 +335,11 @@ streamlit run app.py --server.port 8502
 ```
 ## 🔮 Future Work
 
-- Expand the dataset using real-world phishing URL sources  
-- Add advanced security features such as domain age, URL entropy, and homograph attack detection  
-- Improve model performance through tuning and ensemble techniques  
-- Enhance explainability with feature importance and decision insights  
-- Provide additional deployment options such as REST APIs or browser extensions
+- Expand the dataset with more real-world phishing URLs
+- Add more sophisticated features like domain age and SSL certificate analysis
+- Experiment with different ML algorithms and hyperparameter tuning
+- Improve the web interface with better visualizations
+- Add API endpoints for integration with other tools
 
 ## 📚 Learning Resources
 
@@ -320,15 +360,15 @@ Feel free to:
 
 This project is open source and available for educational purposes.
 
-## 👨‍💻 Author - me :) 
+## 👨‍💻 Author
 
-Built as a beginner-friendly ML project for learning. 
+Built as a machine learning project for educational purposes. 
 
 ---
 
-**Happy Phishing Detection! 🔒**
+**Happy Learning! 🔒**
 
-Remember: Stay safe online and always verify suspicious URLs.
+Remember: This is a learning project. Real phishing detection is complex and requires multiple layers of security.
 
 # phishing-url-classifier
-This project uses machine learning to identify phishing URLs by analyzing URL patterns and security indicators, and provides an easy-to-use web and CLI interface. blah blah blah 
+A machine learning project that identifies phishing URLs using pattern analysis and provides an easy-to-use web and CLI interface. 
